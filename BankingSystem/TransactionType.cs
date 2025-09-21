@@ -9,6 +9,7 @@ namespace BankingSystem
     public enum TransactionType
     {
         Deposit,
+
         Withdraw
     }
 }
