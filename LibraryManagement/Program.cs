@@ -12,13 +12,18 @@ class Program
         Member memberOne = new Member(1, "Ram Shrestha");
         Member memberTwo = new Member(2, "Hari Maharjan");
 
-        bookOne.ReturnBooks();
+        //bookOne.ReturnBooks();
 
-        bookThree.ReturnBooks();
+        memberOne.Borrow(bookThree);
+
+        bookThree.ReturnBook();
+
+        memberOne.Borrow(bookThree);
 
         memberOne.Borrow(bookTwo);
+        memberTwo.Borrow(bookTwo);
 
-        memberTwo.Return(bookOne);
+        //memberTwo.Return(bookOne);
 
         Console.ReadLine();
     }

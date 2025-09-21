@@ -10,7 +10,7 @@ namespace LibraryManagement
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Book> BorrowedBooks { get; set; } = new List<Book>();
+        public List<Book> BorrowedBooks = new List<Book>();
 
         public Member(int id, string name)
         {
@@ -23,7 +23,8 @@ namespace LibraryManagement
             if (book.IsAvailable)
             {
                 BorrowedBooks.Add(book);
-                book.IsAvailable = false;
+                //book.IsAvailable = false;
+                book.BorrowBook();
                 Console.WriteLine($"{Name} borrowed {book.Title}.");
             }
             else
@@ -36,7 +37,8 @@ namespace LibraryManagement
             if(BorrowedBooks.Contains(book))
             {
                 BorrowedBooks.Remove(book);
-                book.IsAvailable = true;
+                //book.IsAvailable = true;
+                book.ReturnBook();
                 Console.WriteLine($"{Name} returned {book.Title}.");
             }
             else

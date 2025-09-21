@@ -21,23 +21,22 @@ namespace LibraryManagement
             IsAvailable = isAvailable;
         }
 
-        public void BorrowBooks()
+        public void BorrowBook()
         {
             if(IsAvailable)
             {
-                Console.WriteLine($"{Title} has been borrowed!");
+                IsAvailable = false;
             }
             else
             {
                 Console.WriteLine($"{Title} is not available.");
             }
         }
-        public void ReturnBooks()
+        public void ReturnBook()
         {
             if (!IsAvailable)
             {
                 IsAvailable = true;
-                Console.WriteLine($"{Title} has been returned.");
             }
             else
             {
