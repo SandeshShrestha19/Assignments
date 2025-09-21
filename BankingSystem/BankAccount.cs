@@ -10,7 +10,7 @@ namespace BankingSystem
     {
         public string AccountNumber { get; set; }
         public string HolderName { get; set; }
-        public decimal Balance { get; set; } = 0;
+        private decimal Balance { get; set; }
 
         public BankAccount(string accountNumber, string holderName, decimal balance)
         {

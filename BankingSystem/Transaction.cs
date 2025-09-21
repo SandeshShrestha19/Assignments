@@ -9,18 +9,18 @@ namespace BankingSystem
     public class Transaction
     {
         public int TransactionId { get; set; }
-        public string TypeOfTransaction { get; set; } // wtihdraw or deposit
-        public decimal Amount {  get; set; }
+        public TransactionType TypeOfTransaction { get; set; } // withdraw or deposit
+        private decimal Amount {  get; set; }
         public DateTime DateTime {  get; set; }
 
-        public Transaction(int transactionId, string typeOfTransaction, decimal amount)
+        public Transaction(int transactionId, TransactionType typeOfTransaction, decimal amount)
         {
             TransactionId = transactionId;
             TypeOfTransaction = typeOfTransaction;
             Amount = amount;
             DateTime = System.DateTime.Now;
         }
-        public override string ToString()
+        public string DisplayTransactionInformation()
         {
             return $"[ID: {TransactionId}] {TypeOfTransaction} of {Amount} on {DateTime}";
         }

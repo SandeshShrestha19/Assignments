@@ -12,7 +12,8 @@ class Program
         int initialTransactionId = 1001;
 
         accountOne.Deposit(3000);
-        transactionList.Add(new Transaction(initialTransactionId++, "Deposit", 3000));
+
+        transactionList.Add(new Transaction(initialTransactionId++, TransactionType.Deposit, 3000));
 
         //accountTwo.Withdraw(2000);
         //transactionList.Add(new Transaction(initialTransactionId++, "Withdraw", 2000));
@@ -27,7 +28,8 @@ class Program
         Console.WriteLine("|----Transaction History----|");
         foreach(var transaction in transactionList)
         {
-            Console.WriteLine(transaction);
+            string transactionInformation = transaction.DisplayTransactionInformation();
+            Console.WriteLine(transactionInformation);
         }
 
         Console.ReadKey();
