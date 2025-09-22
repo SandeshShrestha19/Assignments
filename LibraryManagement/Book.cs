@@ -23,25 +23,19 @@ namespace LibraryManagement
 
         public void BorrowBook()
         {
-            if(IsAvailable)
+            if(!IsAvailable)
             {
-                IsAvailable = false;
+                return;
             }
-            else
-            {
-                Console.WriteLine($"{Title} is not available.");
-            }
+            IsAvailable = true;
         }
         public void ReturnBook()
         {
-            if (!IsAvailable)
+            if (IsAvailable)
             {
-                IsAvailable = true;
+                return;
             }
-            else
-            {
-                Console.WriteLine($"{Title} wasn't borrowed.");
-            }
+            IsAvailable = true;
         }
     }
 }
