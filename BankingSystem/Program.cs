@@ -5,11 +5,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        BankAccount accountOne = new BankAccount("12345678", "Ram Bahadur", 45605);
-        BankAccount accountTwo = new BankAccount("12875678", "Shyam Krishna", 106605);
+        var accountOne = new BankAccount("12345678", "Ram Bahadur", 45605);
+        var accountTwo = new BankAccount("12875678", "Shyam Krishna", 106605);
 
-        List<Transaction> transactionList = new List<Transaction>();
-        int initialTransactionId = 1001;
+        var transactionList = new List<Transaction>();
+        var initialTransactionId = 1001;
 
         accountOne.Deposit(3000);
 

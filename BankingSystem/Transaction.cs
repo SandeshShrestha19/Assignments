@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,10 +16,10 @@ namespace BankingSystem
 
         public Transaction(int transactionId, TransactionType typeOfTransaction, decimal amount)
         {
-            TransactionId = transactionId;
+            this.TransactionId = transactionId;
             TypeOfTransaction = typeOfTransaction;
             Amount = amount;
-            DateTime = System.DateTime.Now;
+            DateTime = System.DateTime.UtcNow;
         }
         public string DisplayTransactionInformation()
         {
