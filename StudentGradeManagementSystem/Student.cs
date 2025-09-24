@@ -11,7 +11,7 @@ namespace StudentGradeManagementSystem
         /// <summary>
         /// This method helps to collect the grades of multiple student and store those data in an array
         /// </summary>
-        public void GetGrades()
+        public double[] CollectGrades()
         {
             Console.Write("How many grades do you want to enter? ");
             var numberOfGrades = Convert.ToInt32(Console.ReadLine());
@@ -23,6 +23,7 @@ namespace StudentGradeManagementSystem
                 Console.Write($"Enter grade #{i + 1}: ");
                 Grades[i] = Convert.ToDouble(Console.ReadLine());
             }
+            return Grades;
         }
         /// <summary>
         /// This method helps to calculate the average of the grades collected in an array
