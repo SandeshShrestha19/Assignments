@@ -28,18 +28,15 @@ namespace StudentGradeManagementSystem
         /// <summary>
         /// This method helps to calculate the average of the grades collected in an array
         /// </summary>
-        public void GetAverage()
+        public string GetAverage()
         {
             if (Grades == null || Grades.Length == 0)
             {
-                Console.WriteLine("No grades were entered!");
-                return;
+                return "No grades were entered!";
             }
 
             var averageGrades = Grades.Average();
-            Console.WriteLine($"The average of grades is {averageGrades:F2}.");
-
-            Console.WriteLine();
+            return $"The average of grades is {averageGrades:F2}.";
         }
         /// <summary>
         /// This method displays the grades obtained by respective student.
