@@ -87,10 +87,10 @@ class Program
         var positions = students.Select(student => gradeScale.IndexOf(student.Grade));
 
         // Average position
-        double avgPosition = positions.Average();
+        var avgPosition = positions.Average();
 
         // Round to nearest valid grade
-        string averageGrade = gradeScale[(int)Math.Round(avgPosition)];
+        var averageGrade = gradeScale[(int)Math.Round(avgPosition)];
 
         Console.WriteLine($"Average Grade of Students: {averageGrade}");
 
