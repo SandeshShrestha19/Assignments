@@ -29,24 +29,41 @@ namespace LibraryManagementSystem
         public void BorrowBook(int memberId, int bookId)
         {
             var member = members.Find(member => member.MemberId == memberId);
+            if (member == null)
+            {
+                throw new Exception("Member not found!");
+            }
             var book = books.Find(book => book.Id == bookId);
+            if (book == null)
+            {
+                throw new Exception("Book not found!");
+            }
             if (!book.IsAvailable)
             {
                 return;
             }
             book.IsAvailable = false;
-            transactions.Add(new Transaction(transactions.Count + 1, member, book, "Borrow"));
+            transactions.Add(new Transaction(id: transactions.Count + 1,member: member,book: book,type: "Borrow"));
         }
         public void ReturnBook(int memberId, int bookId)
         {
             var member = members.Find(m => m.MemberId == memberId);
+            if(member == null)
+            {
+                throw new Exception("Member not found!");
+            }
+
             var book = books.Find(b => b.Id == bookId);
+            if (book == null)
+            {
+                throw new Exception("Book not found!");
+            }
             if (book.IsAvailable)
             {
                 return;
             }
             book.IsAvailable = true;
-            transactions.Add(new Transaction(transactions.Count + 1, member, book, "Return"));
+            transactions.Add(new Transaction(id: transactions.Count + 1, member: member, book: book, type: "Return"));
         }
 
         public void ShowBooks()
