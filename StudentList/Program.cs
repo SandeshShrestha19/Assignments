@@ -80,20 +80,17 @@ class Program
         var gradeScale = new Dictionary<string, double>
         {
             { "A+", 4.0 },
-            { "A", 4.0 },
-            { "A-", 3.7 },
-            { "B+", 3.3 },
-            { "B", 3.0 },
-            { "B-", 2.7 },
-            { "C+", 2.3 },
+            { "A", 3.6 },
+            { "B+", 3.2 },
+            { "B", 2.8 },
+            { "C+", 2.4 },
             { "C", 2.0 },
-            { "C-", 1.7 },
-            { "D", 1.0 },
+            { "D", 1.6 },
             { "F", 0.0 }
         };
 
         // Calculate average GPA
-        double averageGpa = students.Average(s => gradeScale[s.Grade]);
+        double averageGpa = students.Average(student => gradeScale[student.Grade]);
 
         Console.WriteLine($"Average Grade (GPA): {averageGpa:F2}");
 
