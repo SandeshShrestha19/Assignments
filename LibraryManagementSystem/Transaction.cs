@@ -12,20 +12,20 @@ namespace LibraryManagementSystem
         public Member Member { get; set; }
         public Book Book { get; set; }
         public DateTime Date { get; set; }
-        public string Type { get; set; } // Borrow or Return
+        public TypeOfTransfer TransferType { get; set; } // Borrow or Return
 
-        public Transaction(int id, Member member, Book book, string type)
+        public Transaction(int id, Member member, Book book, TypeOfTransfer typeOfTransfer )
         {
             TransactionId = id;
             Member = member;
             Book = book;
-            Type = type;
+            TransferType = typeOfTransfer;
             Date = DateTime.UtcNow;
         }
 
         public string ShowTransactionRecord()
         {
-            return $"[{TransactionId}] {Type} | {Book.Name} | by {Member.Name} on {Date}";
+            return $"[{TransactionId}] {TransferType} | {Book.Name} | by {Member.Name} on {Date}";
         }
     }
 }

@@ -43,7 +43,7 @@ namespace LibraryManagementSystem
                 return;
             }
             book.IsAvailable = false;
-            transactions.Add(new Transaction(id: transactions.Count + 1,member: member,book: book,type: "Borrow"));
+            transactions.Add(new Transaction(id: transactions.Count + 1,member: member,book: book,typeOfTransfer: TypeOfTransfer.Borrow));
         }
         public void ReturnBook(int memberId, int bookId)
         {
@@ -63,7 +63,7 @@ namespace LibraryManagementSystem
                 return;
             }
             book.IsAvailable = true;
-            transactions.Add(new Transaction(id: transactions.Count + 1, member: member, book: book, type: "Return"));
+            transactions.Add(new Transaction(id: transactions.Count + 1, member: member, book: book, typeOfTransfer: TypeOfTransfer.Return));
         }
 
         public void ShowBooks()
