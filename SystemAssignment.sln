@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemAssignment", "SystemA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextFileProcessor", "TextFileProcessor\TextFileProcessor.csproj", "{47ADC0FA-F23C-4553-8253-02A78A172AA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogFileWriter", "LogFileWriter\LogFileWriter.csproj", "{46F34B8B-74B7-475F-A250-10DCF9F948A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{47ADC0FA-F23C-4553-8253-02A78A172AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47ADC0FA-F23C-4553-8253-02A78A172AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47ADC0FA-F23C-4553-8253-02A78A172AA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46F34B8B-74B7-475F-A250-10DCF9F948A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F34B8B-74B7-475F-A250-10DCF9F948A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F34B8B-74B7-475F-A250-10DCF9F948A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F34B8B-74B7-475F-A250-10DCF9F948A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
