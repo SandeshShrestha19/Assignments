@@ -6,23 +6,24 @@ class Program
 {
     static void Main(string[] args)
     {
-        var students = new List<Student>();
-
-        students.Add(new Student(name: "Ram Hari", age: 17, grade: "A+", major: "Science"));
-        students.Add(new Student(name: "Kiran Niraula", age: 18, grade: "A", major: "Science"));
-        students.Add(new Student(name: "Shree Sundari", age: 17, grade: "A", major: "Management"));
-        students.Add(new Student(name: "Aman Gurung", age: 18, grade: "B+", major: "Law"));
-        students.Add(new Student(name: "Maiya Shakya", age: 17, grade: "A", major: "Humanities"));
-        students.Add(new Student(name: "Shyam Maharjan", age: 16, grade: "B", major: "Management"));
+        var students = new List<Student>
+        {
+            new Student(name: "Ram Hari", age: 17, grade: "A+", major: "Science"),
+            new Student(name: "Kiran Niraula", age: 18, grade: "A", major: "Science"),
+            new Student(name: "Shree Sundari", age: 17, grade: "A", major: "Management"),
+            new Student(name: "Aman Gurung", age: 18, grade: "B+", major: "Law"),
+            new Student(name: "Maiya Shakya", age: 17, grade: "A", major: "Humanities"),
+            new Student(name: "Shyam Maharjan", age: 16, grade: "B", major: "Management")
+        };
 
         //----| filter students by grade|----
 
-        var StudentWithGradeA = (from student in students
+        var studentWithGradeA = (from student in students
                                 where student.Grade == "A"
                                 select student).ToList();
         //var StudentWithGradeA = students.Where(student => student.Grade == "A").ToList();
 
-        foreach(var student in StudentWithGradeA)
+        foreach(var student in studentWithGradeA)
         {
             Console.WriteLine(student.Name);
         }
@@ -31,13 +32,13 @@ class Program
 
         //----| sort students by age |----
 
-        var StudentAgeSortedInAscendingOrder = (from student in students
+        var studentAgeSortedInAscendingOrder = (from student in students
                                orderby student.Age ascending
                                select student).ToList();
 
         //var StudentAgeSortedInDescendingOrder = students.OrderByDescending(student => student.Age).ToList();
 
-        foreach(var student in StudentAgeSortedInAscendingOrder)
+        foreach(var student in studentAgeSortedInAscendingOrder)
         {
             Console.WriteLine($"{student.Name} = {student.Age}");
         }
@@ -74,26 +75,27 @@ class Program
         }
 
 
-        //---| average grade|---
+        //---| average grade |---
 
-        // Define ordered grade scale
-        var gradeScale = new List<string>
+        var gradeScale = new Dictionary<string, double>
         {
-            "A+", "A", "B+", "B",
-            "C+", "C", "D+", "D", "F"
+            { "A+", 4.0 },
+            { "A", 4.0 },
+            { "A-", 3.7 },
+            { "B+", 3.3 },
+            { "B", 3.0 },
+            { "B-", 2.7 },
+            { "C+", 2.3 },
+            { "C", 2.0 },
+            { "C-", 1.7 },
+            { "D", 1.0 },
+            { "F", 0.0 }
         };
 
-        // Convert grades to positions
-        var positions = students.Select(student => gradeScale.IndexOf(student.Grade));
+        // Calculate average GPA
+        double averageGpa = students.Average(s => gradeScale[s.Grade]);
 
-        // Average position
-        var avgPosition = positions.Average();
-
-        // Round to nearest valid grade
-        var averageGrade = gradeScale[(int)Math.Round(avgPosition)];
-
-        Console.WriteLine($"Average Grade of Students: {averageGrade}");
-
+        Console.WriteLine($"Average Grade (GPA): {averageGpa:F2}");
 
         Console.ReadLine();
     }
