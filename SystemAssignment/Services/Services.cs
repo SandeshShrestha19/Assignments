@@ -46,7 +46,7 @@ namespace SystemAssignment.Services
             using (var connection = new NpgsqlConnection(DatabaseConnectionConstants.connectionString))
             {
                 await connection.OpenAsync();
-                var affectedRows = await connection.ExecuteAsync(
+                var changeInData = await connection.ExecuteAsync(
                     withdrawQuery,
                     new
                     {
@@ -54,7 +54,7 @@ namespace SystemAssignment.Services
                         Amount = bankAccount.Balance
                     });
 
-                return affectedRows > 0;
+                return changeInData > 0;
             }
         }
 
@@ -68,7 +68,7 @@ namespace SystemAssignment.Services
             using (var connection = new NpgsqlConnection(DatabaseConnectionConstants.connectionString))
             {
                 await connection.OpenAsync();
-                var affectedRows = await connection.ExecuteAsync(
+                var changeInData = await connection.ExecuteAsync(
                     depositQuery,
                     new
                     {
@@ -76,7 +76,7 @@ namespace SystemAssignment.Services
                         Amount = bankAccount.Balance
                     });
 
-                return affectedRows > 0;
+                return changeInData > 0;
             }
         }
 
