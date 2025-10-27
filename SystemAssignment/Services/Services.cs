@@ -4,7 +4,6 @@ using Npgsql;
 using SystemAssignment.Models;
 using SystemAssignment.Constants;
 
-
 namespace SystemAssignment.Services
 {
     public class Services
