@@ -20,7 +20,7 @@ class Program
                 "5. View all transactions");
             var choice = Console.ReadLine();
 
-            var services = new Services();
+            var services = new BankService();
 
             switch (choice)
             {
@@ -44,7 +44,7 @@ class Program
                     break;
             }
         }
-        static async Task CreateAccount(Services services)
+        static async Task CreateAccount(BankService services)
         {
             Console.Write("Enter holder's name: ");
             var holderName = Console.ReadLine();
@@ -83,7 +83,7 @@ class Program
                 return;
             }
 
-            var account = await Services.CheckBalanceAsync(accountNumber);
+            var account = await BankService.CheckBalanceAsync(accountNumber);
 
             if (account != null)
             {
@@ -92,7 +92,7 @@ class Program
             Console.WriteLine("Account not found.");
         }
 
-        async Task WithdrawAmount(Services services)
+        async Task WithdrawAmount(BankService services)
         {
             try
             {
@@ -114,15 +114,15 @@ class Program
                     Balance = withdrawingAmount
                 };
 
-                var success = await Services.WithdrawAmountAsync(bankAccount);
+                var success = await BankService.WithdrawAmountAsync(bankAccount);
 
                 if (success)
                 {
-                    var updatedAccount = await Services.CheckBalanceAsync(accountNumber);
+                    var updatedAccount = await BankService.CheckBalanceAsync(accountNumber);
                     Console.WriteLine($"Withdrawal successful. New balance: {updatedAccount.Balance:C}");
                     transactionList.Add(new Transaction
                     {
-                        TransactionId = transactionIdCounter++,
+                        Id = transactionIdCounter++,
                         TypeOfTransaction = TransactionType.Withdraw,
                         Amount = withdrawingAmount
                     });
@@ -136,7 +136,7 @@ class Program
             }
         }
 
-        async Task DepositAmount(Services services)
+        async Task DepositAmount(BankService services)
         {
             try
             {
@@ -158,15 +158,15 @@ class Program
                     Balance = depositingAmount
                 };
 
-                var success = await Services.DepositAmountAsync(bankAccount);
+                var success = await BankService.DepositAmountAsync(bankAccount);
 
                 if (success)
                 {
-                    var updatedAccount = await Services.CheckBalanceAsync(accountNumber);
+                    var updatedAccount = await BankService.CheckBalanceAsync(accountNumber);
                     Console.WriteLine($"Deposit successful. New balance: {updatedAccount.Balance:C}");
                     transactionList.Add(new Transaction
                     {
-                        TransactionId = transactionIdCounter++,
+                        Id = transactionIdCounter++,
                         TypeOfTransaction = TransactionType.Deposit,
                         Amount = depositingAmount
                     });
@@ -191,7 +191,7 @@ class Program
             Console.WriteLine("--- Transaction History ---");
             foreach (var transaction in transactionList)
             {
-                Console.WriteLine($"ID: {transaction.TransactionId} Type: {transaction.TypeOfTransaction} | Amount:{transaction.Amount:F2} Date: {DateTime.UtcNow}");
+                Console.WriteLine($"ID: {transaction.Id} Type: {transaction.TypeOfTransaction} | Amount:{transaction.Amount:F2} Date: {DateTime.UtcNow}");
             }
             Console.WriteLine();
         }
