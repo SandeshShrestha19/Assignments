@@ -6,7 +6,7 @@ namespace SystemAssignment.Constants
 {
     public enum TransactionType
     {
-        Deposit,
-        Withdraw
+        Deposit = 1,
+        Withdraw = 2
     }
 }
