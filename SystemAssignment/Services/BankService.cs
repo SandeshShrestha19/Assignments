@@ -6,7 +6,7 @@ using SystemAssignment.Constants;
 
 namespace SystemAssignment.Services
 {
-    public class Services
+    public class BankService // BankService
     {
         public async Task CreateAccountAsync(BankAccount bankAccount)
         {
@@ -45,7 +45,7 @@ namespace SystemAssignment.Services
             using (var connection = new NpgsqlConnection(DatabaseConnectionConstants.connectionString))
             {
                 await connection.OpenAsync();
-                var changeInData = await connection.ExecuteAsync(
+                var affectedRows = await connection.ExecuteAsync(
                     withdrawQuery,
                     new
                     {
@@ -53,7 +53,7 @@ namespace SystemAssignment.Services
                         Amount = bankAccount.Balance
                     });
 
-                return changeInData > 0;
+                return affectedRows > 0;
             }
         }
 
@@ -67,7 +67,7 @@ namespace SystemAssignment.Services
             using (var connection = new NpgsqlConnection(DatabaseConnectionConstants.connectionString))
             {
                 await connection.OpenAsync();
-                var changeInData = await connection.ExecuteAsync(
+                var affectedRows = await connection.ExecuteAsync(
                     depositQuery,
                     new
                     {
@@ -75,7 +75,7 @@ namespace SystemAssignment.Services
                         Amount = bankAccount.Balance
                     });
 
-                return changeInData > 0;
+                return affectedRows > 0;
             }
         }
 
